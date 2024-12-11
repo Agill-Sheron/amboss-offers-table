@@ -89,53 +89,54 @@ const mockData: Offer[] = [
 
 export function OffersTable() {
   return (
-    <div className="rounded-lg border border-zinc-800">
+    <div className="rounded-lg border">
       <Table>
         <TableHeader>
-          <TableRow className="border-zinc-800 hover:bg-zinc-900/50">
-            <TableHead className="text-text-light text-sm font-medium">Seller</TableHead>
-            <TableHead className="text-text-light text-sm font-medium">
-              <div className="flex items-center gap-1">
-                Seller Score
-                <InfoCircledIcon className="h-4 w-4 text-text-light" />
-              </div>
-            </TableHead>
-            <TableHead className="text-text-light text-sm font-medium">Cost (Fixed sats)</TableHead>
-            <TableHead className="text-text-light text-sm font-medium">
-              <div className="flex flex-col">
-                <span>Promises</span>
-                <div className="flex gap-4 text-xs text-text-light">
-                  <span>Max Fee Rate (ppm)</span>
-                  <span>Min Channel Age</span>
-                </div>
-              </div>
-            </TableHead>
-            <TableHead className="text-text-light text-sm font-medium">
-              <div className="flex flex-col">
-                <span>APR</span>
-                <div className="flex gap-4 text-xs text-text-light">
-                  <span>Variable (ppm)</span>
-                  <span>Min</span>
-                  <span>Max</span>
-                </div>
-              </div>
-            </TableHead>
-            <TableHead className="text-text-light text-sm font-medium">
-              <div className="flex flex-col">
-                <span>Size Limits</span>
-                <div className="flex gap-4 text-xs text-text-light">
-                  <span>Min</span>
-                  <span>Max</span>
-                </div>
-              </div>
-            </TableHead>
-            <TableHead className="text-text-light text-sm font-medium">Available Liquidity</TableHead>
-            <TableHead className="text-text-light text-sm font-medium">History</TableHead>
-          </TableRow>
+            <TableRow>
+                <TableHead className="text-text-white text-sm font-medium">Cost</TableHead>
+                <TableHead className="text-text-white text-sm font-medium">Promises</TableHead>
+                <TableHead className="text-text-white text-sm font-medium">APR</TableHead>
+                <TableHead className="text-text-white text-sm font-medium">Size Limits</TableHead>
+            </TableRow>
+            <TableRow >
+                <TableHead className="text-text-light text-sm font-medium">Seller</TableHead>
+                <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
+                    <div className="flex items-center gap-1">
+                        Seller Score
+                        <InfoCircledIcon className="h-4 w-4 "/>
+                    </div>
+                </TableHead>
+                <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">Fixed (sats)</TableHead>
+                <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
+                        <span>Max Fee Rate (ppm)</span>
+                </TableHead>
+                <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
+                    <span>Min Channel Age</span>
+                </TableHead>
+            
+                <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
+                    Variable (ppm)
+                </TableHead>
+                <TableHead className="text-text-light text-sm font-medium">
+                    Min
+                </TableHead>
+                <TableHead className="text-text-light text-sm font-medium">
+                    Max
+                </TableHead>
+                <TableHead className="text-text-light text-sm font-medium">
+                    Min
+                </TableHead>
+                <TableHead className="text-text-light text-sm font-medium">
+                    Max
+                </TableHead>
+            
+                <TableHead className="text-text-light text-sm font-medium">Available Liquidity</TableHead>
+                <TableHead className="text-text-light text-sm font-medium">History</TableHead>
+            </TableRow>
         </TableHeader>
         <TableBody>
           {mockData.map((offer) => (
-            <TableRow key={offer.id} className="border-zinc-800 hover:bg-zinc-900/50">
+            <TableRow key={offer.id} className="hover:bg-hover">
               <TableCell>
                 <div className="flex items-center gap-2">
                   <Avatar>
@@ -158,24 +159,26 @@ export function OffersTable() {
               </TableCell>
               <TableCell className="text-sm font-normal text-text-muted">{offer.sellerScore}/100</TableCell>
               <TableCell className="text-sm font-normal text-text-muted">{offer.cost.fixedSats}</TableCell>
-              <TableCell>
-                <div className="flex gap-4 text-sm font-normal text-text-muted">
-                  <span>{offer.promises.maxFeeRate}</span>
-                  <span>{offer.promises.minChannelAge}</span>
-                </div>
+              <TableCell className="text-sm font-normal text-text-muted">
+                {offer.promises.maxFeeRate}
               </TableCell>
-              <TableCell>
-                <div className="flex gap-4 text-sm font-normal text-text-muted">
-                  <span>{offer.apr.variable}</span>
-                  <span>{offer.apr.min}%</span>
-                  <span>{offer.apr.max}%</span>
-                </div>
+              <TableCell className="text-sm font-normal text-text-muted">
+                {offer.promises.minChannelAge}
               </TableCell>
-              <TableCell>
-                <div className="flex gap-4 text-sm font-normal text-text-muted">
-                  <span>{offer.sizeLimits.min}</span>
-                  <span>{offer.sizeLimits.max}</span>
-                </div>
+              <TableCell className="text-sm font-normal text-text-muted">
+                  {offer.apr.variable}
+              </TableCell>
+              <TableCell className="text-sm font-normal text-text-muted">
+                  {offer.apr.min}%
+              </TableCell>
+              <TableCell className="text-sm font-normal text-text-muted">
+                  {offer.apr.max}%
+              </TableCell>
+              <TableCell className="text-sm font-normal text-text-muted">
+                  {offer.sizeLimits.min}
+              </TableCell>
+              <TableCell className="text-sm font-normal text-text-muted">
+                  {offer.sizeLimits.max}
               </TableCell>
               <TableCell>
                 <div>

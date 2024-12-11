@@ -16,6 +16,7 @@ const config: Config = {
   		screens: {
   			"2xl": "1400px",
   		},
+
   	},
   	fontSize: {
   		xs: ["12px", { lineHeight: "16px" }],
@@ -82,6 +83,9 @@ const config: Config = {
   				DEFAULT: "hsl(var(--card))",
   				foreground: "hsl(var(--card-foreground))",
   			},
+			hover: {
+				DEFAULT: "#171717",
+			},
   		},
   		borderRadius: {
   			lg: "var(--radius)",
