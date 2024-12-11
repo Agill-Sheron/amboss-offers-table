@@ -8,16 +8,16 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import { Avatar } from "@/components/ui/avatar"
-import { Badge } from "@/components/ui/badge"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { InfoCircledIcon } from "@radix-ui/react-icons"
+import { SellerBadge } from "@/app/components/seller-badge"
 
 interface Offer {
   id: string
   seller: {
     name: string
     avatar: string
-    badges: string[]
+    badges: Array<"Node Runner" | "Fastest" | "Operator" | "Fast">
     channelCount: number
     btcCap: number
   }
@@ -53,8 +53,8 @@ const mockData: Offer[] = [
     id: "1",
     seller: {
       name: "G-Spot-21.69",
-      avatar: "/avatars/1.png",
-      badges: ["Node Runner", "Fastlast"],
+      avatar: "https://github.com/shadcn.png",
+      badges: ["Node Runner", "Fastest"],
       channelCount: 139,
       btcCap: 12.81
     },
@@ -140,17 +140,19 @@ export function OffersTable() {
           {mockData.map((offer) => (
             <TableRow key={offer.id} className="hover:bg-hover">
               <TableCell>
-                <div className="flex items-center gap-2">
-                  <Avatar>
-                    <img src={offer.seller.avatar} alt={offer.seller.name} />
+                <div className="flex items-top gap-3">
+                  <Avatar className="w-10 h-10 rounded-lg">
+                    <AvatarImage src={offer.seller.avatar} alt={offer.seller.name} />
+                    <AvatarFallback>{offer.seller.name.charAt(0)}</AvatarFallback>
                   </Avatar>
-                  <div>
+                  <div className="flex flex-col gap-1">
                     <div className="text-sm font-medium text-text-white">{offer.seller.name}</div>
                     <div className="flex gap-1">
                       {offer.seller.badges.map((badge) => (
-                        <Badge key={badge} variant="secondary" className="bg-zinc-800 text-xs font-medium text-text-muted">
-                          {badge}
-                        </Badge>
+                        <SellerBadge 
+                          key={badge} 
+                          type={badge as "Node Runner" | "Fastest" | "Operator" | "Fast"} 
+                        />
                       ))}
                     </div>
                     <div className="text-xs font-normal text-text-light">
@@ -159,7 +161,7 @@ export function OffersTable() {
                   </div>
                 </div>
               </TableCell>
-              <TableCell className="text-sm font-normal text-text-muted">{offer.sellerScore}/100</TableCell>
+              <TableCell className="text-sm font-normal text-text-muted"><span className="text-text-white">{offer.sellerScore}</span>/100</TableCell>
               <TableCell className="text-sm font-normal text-text-muted">{offer.cost.fixedSats}</TableCell>
               <TableCell className="text-sm font-normal text-text-muted">
                 {offer.promises.maxFeeRate}
