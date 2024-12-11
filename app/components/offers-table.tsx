@@ -92,11 +92,13 @@ export function OffersTable() {
     <div className="rounded-lg border">
       <Table>
         <TableHeader>
-            <TableRow>
-                <TableHead className="text-text-white text-sm font-medium">Cost</TableHead>
-                <TableHead className="text-text-white text-sm font-medium">Promises</TableHead>
-                <TableHead className="text-text-white text-sm font-medium">APR</TableHead>
-                <TableHead className="text-text-white text-sm font-medium">Size Limits</TableHead>
+            <TableRow>           
+                <TableHead colSpan={2} />
+                <TableHead className="text-text-white text-sm font-medium text-left" colSpan={1}>Cost</TableHead>
+                <TableHead className="text-text-white text-sm font-medium text-left" colSpan={3}>Promises</TableHead>
+                <TableHead className="text-text-white text-sm font-medium text-left" colSpan={2}>APR</TableHead>
+                <TableHead className="text-text-white text-sm font-medium text-left" colSpan={2}>Size Limits</TableHead>
+                <TableHead className="text-text-white text-sm font-medium" colSpan={2} />
             </TableRow>
             <TableRow >
                 <TableHead className="text-text-light text-sm font-medium">Seller</TableHead>
