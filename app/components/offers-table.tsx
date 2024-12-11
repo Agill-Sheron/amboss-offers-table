@@ -93,43 +93,44 @@ export function OffersTable() {
       <Table>
         <TableHeader>
           <TableRow className="border-zinc-800 hover:bg-zinc-900/50">
-            <TableHead className="text-zinc-400">
+            <TableHead className="text-text-light text-sm font-medium">Seller</TableHead>
+            <TableHead className="text-text-light text-sm font-medium">
               <div className="flex items-center gap-1">
                 Seller Score
-                <InfoCircledIcon className="h-4 w-4 text-zinc-500" />
+                <InfoCircledIcon className="h-4 w-4 text-text-light" />
               </div>
             </TableHead>
-            <TableHead className="text-zinc-400">Cost (Fixed sats)</TableHead>
-            <TableHead className="text-zinc-400">
+            <TableHead className="text-text-light text-sm font-medium">Cost (Fixed sats)</TableHead>
+            <TableHead className="text-text-light text-sm font-medium">
               <div className="flex flex-col">
                 <span>Promises</span>
-                <div className="flex gap-4 text-xs text-zinc-500">
+                <div className="flex gap-4 text-xs text-text-light">
                   <span>Max Fee Rate (ppm)</span>
                   <span>Min Channel Age</span>
                 </div>
               </div>
             </TableHead>
-            <TableHead className="text-zinc-400">
+            <TableHead className="text-text-light text-sm font-medium">
               <div className="flex flex-col">
                 <span>APR</span>
-                <div className="flex gap-4 text-xs text-zinc-500">
+                <div className="flex gap-4 text-xs text-text-light">
                   <span>Variable (ppm)</span>
                   <span>Min</span>
                   <span>Max</span>
                 </div>
               </div>
             </TableHead>
-            <TableHead className="text-zinc-400">
+            <TableHead className="text-text-light text-sm font-medium">
               <div className="flex flex-col">
                 <span>Size Limits</span>
-                <div className="flex gap-4 text-xs text-zinc-500">
+                <div className="flex gap-4 text-xs text-text-light">
                   <span>Min</span>
                   <span>Max</span>
                 </div>
               </div>
             </TableHead>
-            <TableHead className="text-zinc-400">Available Liquidity</TableHead>
-            <TableHead className="text-zinc-400">History</TableHead>
+            <TableHead className="text-text-light text-sm font-medium">Available Liquidity</TableHead>
+            <TableHead className="text-text-light text-sm font-medium">History</TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -141,53 +142,53 @@ export function OffersTable() {
                     <img src={offer.seller.avatar} alt={offer.seller.name} />
                   </Avatar>
                   <div>
-                    <div className="font-medium text-zinc-100">{offer.seller.name}</div>
+                    <div className="text-sm font-medium text-text-white">{offer.seller.name}</div>
                     <div className="flex gap-1">
                       {offer.seller.badges.map((badge) => (
-                        <Badge key={badge} variant="secondary" className="bg-zinc-800 text-xs text-zinc-300">
+                        <Badge key={badge} variant="secondary" className="bg-zinc-800 text-xs font-medium text-text-muted">
                           {badge}
                         </Badge>
                       ))}
                     </div>
-                    <div className="text-xs text-zinc-500">
+                    <div className="text-xs font-normal text-text-light">
                       {offer.seller.channelCount} ch / {offer.seller.btcCap} BTC cap
                     </div>
                   </div>
                 </div>
               </TableCell>
-              <TableCell className="text-zinc-300">{offer.sellerScore}/100</TableCell>
-              <TableCell className="text-zinc-300">{offer.cost.fixedSats}</TableCell>
+              <TableCell className="text-sm font-normal text-text-muted">{offer.sellerScore}/100</TableCell>
+              <TableCell className="text-sm font-normal text-text-muted">{offer.cost.fixedSats}</TableCell>
               <TableCell>
-                <div className="flex gap-4 text-zinc-300">
+                <div className="flex gap-4 text-sm font-normal text-text-muted">
                   <span>{offer.promises.maxFeeRate}</span>
                   <span>{offer.promises.minChannelAge}</span>
                 </div>
               </TableCell>
               <TableCell>
-                <div className="flex gap-4 text-zinc-300">
+                <div className="flex gap-4 text-sm font-normal text-text-muted">
                   <span>{offer.apr.variable}</span>
                   <span>{offer.apr.min}%</span>
                   <span>{offer.apr.max}%</span>
                 </div>
               </TableCell>
               <TableCell>
-                <div className="flex gap-4 text-zinc-300">
+                <div className="flex gap-4 text-sm font-normal text-text-muted">
                   <span>{offer.sizeLimits.min}</span>
                   <span>{offer.sizeLimits.max}</span>
                 </div>
               </TableCell>
               <TableCell>
                 <div>
-                  <div className="text-zinc-300">{offer.availableLiquidity.amount} BTC</div>
-                  <div className="text-xs text-zinc-500">
+                  <div className="text-sm font-normal text-text-muted">{offer.availableLiquidity.amount} BTC</div>
+                  <div className="text-xs font-normal text-text-light">
                     Total: {offer.availableLiquidity.total} BTC
                   </div>
                 </div>
               </TableCell>
               <TableCell>
                 <div>
-                  <div className="text-zinc-300">{offer.history.orders} orders</div>
-                  <div className="text-xs text-zinc-500">
+                  <div className="text-sm font-normal text-text-muted">{offer.history.orders} orders</div>
+                  <div className="text-xs font-normal text-text-light">
                     {offer.history.capacity} BTC capacity
                   </div>
                 </div>
