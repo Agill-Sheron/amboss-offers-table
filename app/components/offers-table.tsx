@@ -11,6 +11,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { InfoCircledIcon } from "@radix-ui/react-icons"
 import { SellerBadge } from "@/app/components/seller-badge"
+import { truncate } from "@/lib/utils"
 
 interface Offer {
   id: string
@@ -52,7 +53,7 @@ const mockData: Offer[] = [
   {
     id: "1",
     seller: {
-      name: "G-Spot-21.69",
+      name: "G-Spot-21.69jhvh",
       avatar: "https://github.com/shadcn.png",
       badges: ["Node Runner", "Fastest"],
       channelCount: 139,
@@ -146,7 +147,9 @@ export function OffersTable() {
                     <AvatarFallback>{offer.seller.name.charAt(0)}</AvatarFallback>
                   </Avatar>
                   <div className="flex flex-col gap-1">
-                    <div className="text-sm font-medium text-text-white">{offer.seller.name}</div>
+                    <div className="text-sm font-medium text-text-white">
+                      {truncate(offer.seller.name, 12)}
+                    </div>
                     <div className="flex gap-1">
                       {offer.seller.badges.map((badge) => (
                         <SellerBadge 
@@ -161,41 +164,41 @@ export function OffersTable() {
                   </div>
                 </div>
               </TableCell>
-              <TableCell className="text-sm font-normal text-text-muted"><span className="text-text-white">{offer.sellerScore}</span>/100</TableCell>
-              <TableCell className="text-sm font-normal text-text-muted">{offer.cost.fixedSats}</TableCell>
-              <TableCell className="text-sm font-normal text-text-muted">
+              <TableCell className="text-sm font-normal text-text-white">{offer.sellerScore}<span className="text-text-muted">/100</span></TableCell>
+              <TableCell className="text-sm font-normal text-text-white">{offer.cost.fixedSats}</TableCell>
+              <TableCell className="text-sm font-normal text-text-white">
                 {offer.promises.maxFeeRate}
               </TableCell>
-              <TableCell className="text-sm font-normal text-text-muted">
+              <TableCell className="text-sm font-normal text-text-white">
                 {offer.promises.minChannelAge}
               </TableCell>
-              <TableCell className="text-sm font-normal text-text-muted">
+              <TableCell className="text-sm font-normal text-text-white">
                   {offer.apr.variable}
               </TableCell>
-              <TableCell className="text-sm font-normal text-text-muted">
+              <TableCell className="text-sm font-normal text-text-white">
                   {offer.apr.min}%
               </TableCell>
-              <TableCell className="text-sm font-normal text-text-muted">
+              <TableCell className="text-sm font-normal text-text-white">
                   {offer.apr.max}%
               </TableCell>
-              <TableCell className="text-sm font-normal text-text-muted">
+              <TableCell className="text-sm font-normal text-text-white">
                   {offer.sizeLimits.min}
               </TableCell>
-              <TableCell className="text-sm font-normal text-text-muted">
+              <TableCell className="text-sm font-normal text-text-white">
                   {offer.sizeLimits.max}
               </TableCell>
               <TableCell>
                 <div>
-                  <div className="text-sm font-normal text-text-muted">{offer.availableLiquidity.amount} BTC</div>
-                  <div className="text-xs font-normal text-text-light">
+                  <div className="text-sm font-normal text-text-white">{offer.availableLiquidity.amount} BTC</div>
+                  <div className="text-xs font-normal text-text-muted">
                     Total: {offer.availableLiquidity.total} BTC
                   </div>
                 </div>
               </TableCell>
               <TableCell>
                 <div>
-                  <div className="text-sm font-normal text-text-muted">{offer.history.orders} orders</div>
-                  <div className="text-xs font-normal text-text-light">
+                  <div className="text-sm font-normal text-text-white">{offer.history.orders} orders</div>
+                  <div className="text-xs font-normal text-text-muted">
                     {offer.history.capacity} BTC capacity
                   </div>
                 </div>
