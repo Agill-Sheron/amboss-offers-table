@@ -1,7 +1,7 @@
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 
-type BadgeType = "Node Runner" | "Fastest" | "Operator" | "Fast" | "Builder"
+type BadgeType = "Node Runner" | "Fastest" | "Operator" | "Fast" | "Builder" | "New"
 
 const badgeStyles: Record<BadgeType, { border: string; text: string }> = {
   "Node Runner": { border: "border-[#A3E635]", text: "text-[#A3E635]" },
@@ -9,6 +9,7 @@ const badgeStyles: Record<BadgeType, { border: string; text: string }> = {
   "Operator": { border: "border-[#FACC15]", text: "text-[#FACC15]" },
   "Fast": { border: "border-[#60A5FA]", text: "text-[#60A5FA]" },
   "Builder": { border: "border-red-500", text: "text-red-500" },
+  "New": { border: "border-orange-500", text: "text-orange-500" },
 }
 
 interface SellerBadgeProps {
