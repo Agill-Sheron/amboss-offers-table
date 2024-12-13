@@ -1,6 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lightning Network Marketplace
 
-## Getting Started
+A marketplace for Lightning Network liquidity offers.
+
+## Tech Stack
+
+- **Framework**: Next.js 15
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **UI Components**: shadcn/ui
+- **API Integration**: Apollo Client
+- **API**: Amboss GraphQL API
+- **Icons**: Radix Icons, Lucide Icons
+
+## Types
+
+### Offer
+Represents a liquidity offer with:
+- Seller information (name, badges, channel stats)
+- Costs (fixed and variable fees in sats)
+- Promises (max fee rate, minimum channel age)
+- Size limits (min/max amounts)
+- APR details
+- Liquidity and history information
+
+### APIOfferType 
+Raw offer data from the Amboss API, transformed into the client-side Offer type.
+
+## Development
 
 First, run the development server:
 
