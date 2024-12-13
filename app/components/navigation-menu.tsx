@@ -34,7 +34,7 @@ export function NavigationMenu() {
             </div>
             <div className="flex items-center gap-4">
                 <SearchBar />
-                <Button variant="outline" className="bg-transparent text-text-white font-semibold hover:bg-zinc-800">
+                <Button variant="outline" className="bg-transparent text-text-white font-semibold hover:bg-zinc-800 rounded-lg">
                     <LayoutGrid className="mr-2 h-4 w-4" />
                     Dashboard
                 </Button>

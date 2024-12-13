@@ -15,7 +15,7 @@ const InputWithIcon = forwardRef<HTMLInputElement, InputWithIconProps>(
         <Input
           className={cn(
             iconPosition === "right" ? "pr-4" : "pl-4",
-            "bg-transparent",
+            "bg-transparent rounded-lg",
             className
           )}
           ref={ref}

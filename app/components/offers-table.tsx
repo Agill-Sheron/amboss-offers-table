@@ -17,7 +17,7 @@ import { Offer } from "@/lib/types"
 export function OffersTable({ offers }: { offers: Offer[] }) {
 
   return (
-    <div className="rounded-lg border">
+    <div className="rounded-xl border">
       <Table>
         <TableHeader>
             <TableRow className="h-9 px-5 py-2">           
