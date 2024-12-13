@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Table,
   TableBody,
@@ -10,98 +12,18 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { InfoCircledIcon } from "@radix-ui/react-icons"
 import { SellerBadge } from "@/app/components/seller-badge"
 import { truncate } from "@/lib/utils"
-import { GET_OFFERS } from "../graphql/queries/offers"
-import { client } from "@/lib/apollo-client"
+import { Offer } from "@/lib/types"
 
-interface Offer {
-  id: string
-  seller: {
-    name: string
-    avatar: string
-    badges: Array<"Node Runner" | "Fastest" | "Operator" | "Fast">
-    channelCount: number
-    btcCap: number
-  }
-  sellerScore: number
-  cost: {
-    fixedSats: number
-  }
-  promises: {
-    maxFeeRate: number
-    minChannelAge: string
-  }
-  apr: {
-    variable: number
-    min: number
-    max: number
-  }
-  sizeLimits: {
-    min: number
-    max: number
-  }
-  availableLiquidity: {
-    amount: number
-    total: number
-  }
-  history: {
-    orders: number
-    capacity: number
-  }
-}
+export function OffersTable({ offers }: { offers: Offer[] }) {
 
-const mockData: Offer[] = [
-  {
-    id: "1",
-    seller: {
-      name: "G-Spot-21.69jhvh",
-      avatar: "https://github.com/shadcn.png",
-      badges: ["Node Runner", "Fastest"],
-      channelCount: 139,
-      btcCap: 12.81
-    },
-    sellerScore: 95,
-    cost: {
-      fixedSats: 1278
-    },
-    promises: {
-      maxFeeRate: 650,
-      minChannelAge: "~90d"
-    },
-    apr: {
-      variable: 9600,
-      min: 4.07,
-      max: 3.91
-    },
-    sizeLimits: {
-      min: 0.03,
-      max: 0.25
-    },
-    availableLiquidity: {
-      amount: 0.301,
-      total: 4.158
-    },
-    history: {
-      orders: 61,
-      capacity: 3.697
-    }
-  },
-  // Add more mock data here as needed
-]
-
-export async function OffersTable() {
-
-  const { data } = await client.query({ query: GET_OFFERS });
-
-  console.log(data)
-  
   return (
     <div className="rounded-lg border">
       <Table>
         <TableHeader>
             <TableRow>           
                 <TableHead colSpan={2} />
-                <TableHead className="text-text-white text-sm font-medium text-left" colSpan={1}>Cost</TableHead>
-                <TableHead className="text-text-white text-sm font-medium text-left" colSpan={3}>Promises</TableHead>
+                <TableHead className="text-text-white text-sm font-medium text-left" colSpan={2}>Cost</TableHead>
+                <TableHead className="text-text-white text-sm font-medium text-left" colSpan={2}>Promises</TableHead>
                 <TableHead className="text-text-white text-sm font-medium text-left" colSpan={2}>APR</TableHead>
                 <TableHead className="text-text-white text-sm font-medium text-left" colSpan={2}>Size Limits</TableHead>
                 <TableHead className="text-text-white text-sm font-medium" colSpan={2} />
@@ -116,15 +38,14 @@ export async function OffersTable() {
                 </TableHead>
                 <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">Fixed (sats)</TableHead>
                 <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
+                    Variable (ppm)
+                </TableHead>         
+                <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
                         <span>Max Fee Rate (ppm)</span>
                 </TableHead>
                 <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
                     <span>Min Channel Age</span>
                 </TableHead>
-            
-                <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
-                    Variable (ppm)
-                </TableHead>
                 <TableHead className="text-text-light text-sm font-medium">
                     Min
                 </TableHead>
@@ -137,13 +58,12 @@ export async function OffersTable() {
                 <TableHead className="text-text-light text-sm font-medium">
                     Max
                 </TableHead>
-            
                 <TableHead className="text-text-light text-sm font-medium">Available Liquidity</TableHead>
                 <TableHead className="text-text-light text-sm font-medium">History</TableHead>
             </TableRow>
         </TableHeader>
         <TableBody>
-          {mockData.map((offer) => (
+          {offers.map((offer: Offer) => (
             <TableRow key={offer.id} className="hover:bg-hover">
               <TableCell>
                 <div className="flex items-top gap-3">
@@ -172,14 +92,15 @@ export async function OffersTable() {
               <TableCell className="text-sm font-normal text-text-white">{offer.sellerScore}<span className="text-text-muted">/100</span></TableCell>
               <TableCell className="text-sm font-normal text-text-white">{offer.cost.fixedSats}</TableCell>
               <TableCell className="text-sm font-normal text-text-white">
+                  {offer.cost.variableSats}
+              </TableCell>
+              <TableCell className="text-sm font-normal text-text-white">
                 {offer.promises.maxFeeRate}
               </TableCell>
               <TableCell className="text-sm font-normal text-text-white">
                 {offer.promises.minChannelAge}
               </TableCell>
-              <TableCell className="text-sm font-normal text-text-white">
-                  {offer.apr.variable}
-              </TableCell>
+          
               <TableCell className="text-sm font-normal text-text-white">
                   {offer.apr.min}%
               </TableCell>
