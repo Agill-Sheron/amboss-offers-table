@@ -64,8 +64,8 @@ export function OffersTable({ offers }: { offers: Offer[] }) {
         </TableHeader>
         <TableBody>
           {offers.map((offer: Offer) => (
-            <TableRow key={offer.id} className="hover:bg-hover">
-              <TableCell>
+            <TableRow key={offer.id} className="hover:bg-hover h-20">
+              <TableCell className="px-5 py-2">
                 <div className="flex items-top gap-3">
                   <Avatar className="w-10 h-10 rounded-lg">
                     <AvatarImage src={offer.seller.avatar} alt={offer.seller.name} />
@@ -75,7 +75,7 @@ export function OffersTable({ offers }: { offers: Offer[] }) {
                     <div className="text-sm font-medium text-text-white">
                       {truncate(offer.seller.name, 12)}
                     </div>
-                    <div className="flex gap-1">
+                    <div className="flex gap-2">
                       {offer.seller.badges.map((badge) => (
                         <SellerBadge 
                           key={badge} 
@@ -116,7 +116,7 @@ export function OffersTable({ offers }: { offers: Offer[] }) {
               <TableCell>
                 <div>
                   <div className="text-sm font-normal text-text-white">{offer.availableLiquidity.amount} BTC</div>
-                  <div className="text-xs font-normal text-text-muted">
+                  <div className="text-xs font-normal text-text-muted whitespace-nowrap">
                     Total: {offer.availableLiquidity.total} BTC
                   </div>
                 </div>
@@ -124,7 +124,7 @@ export function OffersTable({ offers }: { offers: Offer[] }) {
               <TableCell>
                 <div>
                   <div className="text-sm font-normal text-text-white">{offer.history.orders} orders</div>
-                  <div className="text-xs font-normal text-text-muted">
+                  <div className="text-xs font-normal text-text-muted whitespace-nowrap">
                     {offer.history.capacity} BTC capacity
                   </div>
                 </div>
