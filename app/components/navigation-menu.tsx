@@ -16,7 +16,7 @@ export function NavigationMenu() {
   return (
     <header className="border-b relative py-2.5 px-8">
         <div className="container mx-auto flex items-center justify-between" style={{ height: '56px' }}>
-            <div className="flex items-center gap-8">
+            <div className="flex items-center gap-10">
                 <Image
                     src="/logo.png"
                     alt="AMBOSS"
@@ -25,7 +25,7 @@ export function NavigationMenu() {
                     priority
                 />
                 <nav>
-                    <ul className="flex gap-6 text-zinc-400">
+                    <ul className="flex gap-10">
                         {navigation.map((item) => (
                         <li key={item.name} className="text-text-light text-sm hover:text-text-white cursor-pointer font-medium">{item.name}</li>
                         ))}

@@ -20,7 +20,7 @@ export function OffersTable({ offers }: { offers: Offer[] }) {
     <div className="rounded-lg border">
       <Table>
         <TableHeader>
-            <TableRow>           
+            <TableRow className="h-9 px-5 py-2">           
                 <TableHead colSpan={2} />
                 <TableHead className="text-text-white text-sm font-medium text-left" colSpan={2}>Cost</TableHead>
                 <TableHead className="text-text-white text-sm font-medium text-left" colSpan={2}>Promises</TableHead>
@@ -28,7 +28,7 @@ export function OffersTable({ offers }: { offers: Offer[] }) {
                 <TableHead className="text-text-white text-sm font-medium text-left" colSpan={2}>Size Limits</TableHead>
                 <TableHead className="text-text-white text-sm font-medium" colSpan={2} />
             </TableRow>
-            <TableRow >
+            <TableRow className="h-14 px-5 py-2">
                 <TableHead className="text-text-light text-sm font-medium">Seller</TableHead>
                 <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
                     <div className="flex items-center gap-1">

@@ -28,7 +28,7 @@ export default async function Home() {
       <NavigationMenu />
 
       {/* Main Content */}
-      <div className="container mx-auto px-4 py-8 relative">
+      <div className="container mx-auto px-12 py-8 relative">
         <div className="mb-6 flex items-center justify-between">
           <h1 className="text-2xl font-semibold text-text-white">Explore Offers ({offers.length})</h1>
           <div className="flex gap-4">
