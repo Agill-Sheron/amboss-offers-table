@@ -1,5 +1,3 @@
-"use client"
-
 import {
   Table,
   TableBody,
@@ -12,6 +10,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { InfoCircledIcon } from "@radix-ui/react-icons"
 import { SellerBadge } from "@/app/components/seller-badge"
 import { truncate } from "@/lib/utils"
+import { GET_OFFERS } from "../graphql/queries/offers"
+import { client } from "@/lib/apollo-client"
 
 interface Offer {
   id: string
@@ -88,7 +88,12 @@ const mockData: Offer[] = [
   // Add more mock data here as needed
 ]
 
-export function OffersTable() {
+export async function OffersTable() {
+
+  const { data } = await client.query({ query: GET_OFFERS });
+
+  console.log(data)
+  
   return (
     <div className="rounded-lg border">
       <Table>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter as InterVariable } from "next/font/google";
 import "./globals.css";
+import { Providers } from "./providers";
 
 const inter = InterVariable({ 
   subsets: ["latin"],
@@ -20,7 +21,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`dark ${inter.variable}`}>
-      <body className={`${inter.className} bg-black`}>{children}</body>
+      <body className={`${inter.className} bg-black`}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
