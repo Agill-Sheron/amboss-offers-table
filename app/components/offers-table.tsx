@@ -9,7 +9,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { InfoCircledIcon } from "@radix-ui/react-icons"
+import { Info } from "lucide-react"
 import { SellerBadge } from "@/app/components/seller-badge"
 import { truncate } from "@/lib/utils"
 import { Offer } from "@/lib/types"
@@ -33,7 +33,7 @@ export function OffersTable({ offers }: { offers: Offer[] }) {
                 <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">
                     <div className="flex items-center gap-1">
                         Seller Score
-                        <InfoCircledIcon className="h-4 w-4 "/>
+                        <Info className="h-4 w-4 "/>
                     </div>
                 </TableHead>
                 <TableHead className="text-text-light text-sm font-medium whitespace-nowrap">Fixed (sats)</TableHead>
